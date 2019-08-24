@@ -27,7 +27,7 @@ public class AddressService {
     }
 
     @Transactional(readOnly = true)
-    public Address getById(Long id) {
-        return this.addressRepository.getOne(id);
+    public Address findById(Long id) {
+        return this.addressRepository.findById(id).get();
     }
 }
