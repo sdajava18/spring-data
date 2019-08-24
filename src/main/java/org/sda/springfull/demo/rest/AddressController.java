@@ -1,6 +1,8 @@
 package org.sda.springfull.demo.rest;
 
 import org.sda.springfull.demo.domain.Address;
+import org.sda.springfull.demo.dto.AddressDto;
+import org.sda.springfull.demo.mapper.AddressMapper;
 import org.sda.springfull.demo.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,7 +39,7 @@ public class AddressController {
 //
     @ResponseStatus(value = HttpStatus.CREATED)
     @RequestMapping(value = "/address", method = RequestMethod.POST)
-    public void save(@RequestBody @Valid Address address){
-        this.addressService.save(address);
+    public void save(@RequestBody @Valid AddressDto addressDto){
+        this.addressService.save(AddressMapper.toEntity(addressDto));
     }
 }
