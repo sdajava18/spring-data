@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AddressService {
@@ -28,7 +27,7 @@ public class AddressService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<Address> getById(Long id) {
-        return this.addressRepository.findById(id);
+    public Address findById(Long id) {
+        return this.addressRepository.findById(id).get();
     }
 }
